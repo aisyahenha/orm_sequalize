@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const config = require ("../config/config")
-const { initDb } = require("../manager/infra.manager")(config);
+const { initDb } = require("../manager/config.manager")(config);
 // define model
 
 module.exports= ()=>{

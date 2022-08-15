@@ -12,4 +12,5 @@ const infraManager = (config) => {
   };
   return { initDb };
 };
+
 module.exports = infraManager;

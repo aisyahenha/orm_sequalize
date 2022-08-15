@@ -4,7 +4,8 @@ const customer = require("./src/model/model.customers");
 
 const run = async () => {
   await dbMigration();
-  await customer().finaAll();
+  const findAll = await customer().findAll();
+console.log(findAll);
 
   //  const addCustomer = await  customer().create({
   //       name: "John Doe",
