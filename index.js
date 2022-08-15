@@ -32,6 +32,7 @@ const migration = async () => {
     {
       freezeTableName: true,
       underscored: true,
+      paranoid: true, //akan berpengeruh pada delete soft
     }
   );
   await Customer.sync({ alter: true });
@@ -44,13 +45,13 @@ const migration = async () => {
   //     email: "abc@1234.com",
   //     balance: 10,
   //   });
-  //   const customer3 = await Customer.create({
-  //     name: "Lady Bug",
-  //     address: "wonderland",
-  //     phone: "08123121234",
-  //     email: "abc@12324.com",
-  //     balance: 10,
-  //   });
+  // const customer3 = await Customer.create({
+  //   name: "Lady Ant",
+  //   address: "wonderland Kw",
+  //   phone: "08123121234",
+  //   email: "abcd@12324.com",
+  //   balance: 10,
+  // });
 
   //select  * from
 
@@ -63,12 +64,43 @@ const migration = async () => {
   //   });
 
   //find one || by id
-//   const users = await Customer.findOne({
-//     where : {name: 'Mario Bros'}
-//   })
-// const users = await Customer.findByPk('254c0133-152f-42f7-bb10-26dff3a79075')
+  //   const users = await Customer.findOne({
+  //     where : {name: 'Mario Bros'}
+  //   })
+  // const users = await Customer.findByPk('254c0133-152f-42f7-bb10-26dff3a79075')
 
-  console.log(users.dataValues);
+  // find count all berhubungan dengan pagination
+  /*
+// Fetch 10 instances/rows
+    Project.findAll({ limit: 10 });
+
+    // Skip 8 instances/rows
+    Project.findAll({ offset: 8 });
+
+    // Skip 5 instances and fetch the 5 after that
+    Project.findAll({ offset: 5, limit: 5 });
+
+  */
+  //delete
+  //  const deleteCus= await Customer.destroy({
+  //   where :{ id: 'cd31b219-9cb9-4075-aeca-53f1345cc2fd'}
+  //  })
+
+  //delete soft
+  //  const deleteCus= await Customer.destroy({
+  //   where :{ id: '6b60e0c7-91f0-4fe4-9eae-9caed05ae432'}
+  //  })
+
+  //update
+  const updateCustomer = await Customer.update(
+    {
+      name: "John Doe",
+    },
+    {
+      where: { id: "2ca4e104-ef81-4aa5-9df6-2617c3b264ca" },
+    }
+  );
+  console.log(updateCustomer);
 };
 migration();
 
